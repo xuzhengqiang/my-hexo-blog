@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-
+      - master
+workflow_dispatch:  # 添加这一行,允许手动触发
 jobs:
   deploy:
     runs-on: ubuntu-latest
