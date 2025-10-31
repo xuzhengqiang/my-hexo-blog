@@ -27,7 +27,7 @@
 
 4. **复制仓库地址**
    - 复制仓库的 HTTPS 地址
-   - 格式: `https://github.com/你的用户名/my-hexo-blog.git`
+   - 格式: `https://github.com/xuzhengqiang/my-hexo-blog.git`
 
 ### 第二步: 推送代码到 GitHub
 
@@ -35,7 +35,7 @@
 
 ```bash
 # 1. 添加远程仓库(替换成你的仓库地址)
-git remote add origin https://github.com/你的用户名/my-hexo-blog.git
+git remote add origin https://github.com/xuzhengqiang/my-hexo-blog.git
 
 # 2. 重命名分支为 main
 git branch -M main
