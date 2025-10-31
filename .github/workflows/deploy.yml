@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-workflow_dispatch:  # 添加这一行,允许手动触
+  workflow_dispatch:  # 添加这一行,允许手动触
 jobs:
   deploy:
     runs-on: ubuntu-latest
