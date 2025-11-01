@@ -3,32 +3,36 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:  # 添加这一行,允许手动触
+      - master  # 当推送到 master 分支时触发
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: false
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
-
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+      with:
+        submodules: true  # 如果主题是 submodule
+        fetch-depth: 0    # 获取完整历史
+    
+    - name: Setup Node.js 📦
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install Dependencies 🔧
+      run: npm ci
+    
+    - name: Build 🏗️
+      run: npm run build
+    
+    - name: Deploy 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        publish_branch: gh-pages
+        # 如果有自定义域名，取消下面一行的注释并修改为你的域名
+        # cname: blog.example.com
